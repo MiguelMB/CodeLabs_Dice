@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun rollDice(diceSelected:Int){
         val randomInt = (1..6).random()
-        
+
         val resultText: TextView = when (diceSelected){
             1 -> findViewById(R.id.result_text_1)
             2 -> findViewById(R.id.result_text_2)
@@ -32,19 +32,22 @@ class MainActivity : AppCompatActivity() {
             2 -> findViewById(R.id.dice_image_2)
             else -> findViewById(R.id.dice_image_1)
         }
-        val drawableResource = when (randomInt){
-            1-> R.drawable.dice_1
-            2-> R.drawable.dice_2
-            3-> R.drawable.dice_3
-            4-> R.drawable.dice_4
-            5-> R.drawable.dice_5
-            else -> R.drawable.dice_6
-        }
+        val drawableResource = getRandomDiceImage(randomInt)
         diceImage.setImageResource(drawableResource)
     }
-    //TODO next function for the button
+
     private fun rollDices(){
         rollDice(1)
         rollDice(2)
+    }
+    private fun getRandomDiceImage(numero:Int): Int {
+        return when (numero) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
     }
 }
